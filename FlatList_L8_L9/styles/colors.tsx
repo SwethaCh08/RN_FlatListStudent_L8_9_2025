@@ -1,6 +1,6 @@
 // color.tsx
 const colors = {
-  primary: "#8F2D56", // Main app color
+  primary: "olive", // Main app color
   secondary: "#F0D0DD", // Accent color
   medium: "#E2A2BC",
   error: "#2f0f1b", // Error messages
