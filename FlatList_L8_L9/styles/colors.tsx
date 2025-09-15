@@ -1,7 +1,7 @@
 // color.tsx
 const colors = {
-  primary: "olive", // Main app color
-  secondary: "#F0D0DD", // Accent color
+  primary: "#a1160e", // Main app color
+  secondary: "#ffc6bf", // Accent color
   medium: "#E2A2BC",
   error: "#2f0f1b", // Error messages
   warning: "#FEE59A", // Warnings
@@ -9,7 +9,7 @@ const colors = {
   background: "#ecf0f1", // Background color
   text: {
     light: "#ffffff", // Text on dark backgrounds
-    dark: "#34495e", // Text on light backgrounds
+    dark: "black", // Text on light backgrounds
   },
   theme: {
     light: {

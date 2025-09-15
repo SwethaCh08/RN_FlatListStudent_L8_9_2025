@@ -8,31 +8,19 @@ import {
 import colors from "@/styles/colors";
 import defaultStyles from "@/styles/defaultStyles";
 import { useState } from "react";
+import ListItemSseparator from "@/components/ListItemSeperator";
+import { DATA, dataType } from "@/data/appData";
 
 export default function Index() {
 
-  type dataType = {
-    id: string; //refer to the unique identifier
-    title:string; //text we will show in the list
-  }
-
-  //Using alll caps because data array will not change 
-  //during its use
-  const DATA: dataType[] = [
-    {id: "1", title: "First Item"},
-    {id: "2", title: "Second Item"},
-    {id: "3", title: "Third Item"},
-    {id: "4", title: "Forth Item"},
-  ];
 
   //create a simple function telling me what was selected 
   const selectedList = (item: dataType) => {
     console.log(item.title);
-    setSlectedID(item.id)
+    setSelectedId(item.id)
   }
 
-  }
-  const [selectedId, setSlectedID] = useState<string>("1")
+  const [selectedId, setSelectedId] = useState<string>("1")
   return (
     <View style={defaultStyles.container}>
       <View style={defaultStyles.titleContainer}>
@@ -42,11 +30,27 @@ export default function Index() {
         <View style={styles.flatlist}>
           <FlatList
             data ={DATA}
+            extraData={selectedId}
             keyExtractor ={(item: dataType) => item.id}
+            ItemSeparatorComponent={() => (
+              <ListItemSseparator color={"red"}/>)}
+              
             renderItem={({ item}) => (
               <TouchableOpacity onPress={() => selectedList(item)}>
-                <View style={styles.flatListRow}>
-                  <Text>{item.title}</Text>  
+                <View style={[styles.flatListRow,
+                  {
+                    backgroundColor: item.id === selectedId
+                    ? colors.primary
+                    : colors.secondary,
+                  }
+                ]}>
+                  <Text style={[styles.titleText,
+                    {
+                      color: item.id === selectedId
+                      ? colors.text.light
+                      : colors.text.dark
+                    }
+                  ]}>{item.title}</Text>  
                 </View>
               </TouchableOpacity>
             )
