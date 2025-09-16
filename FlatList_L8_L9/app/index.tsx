@@ -10,6 +10,7 @@ import defaultStyles from "@/styles/defaultStyles";
 import { useState } from "react";
 import ListItemSseparator from "@/components/ListItemSeperator";
 import { DATA, dataType } from "@/data/appData";
+import ListItem from "@/components/ListItem";
 
 export default function Index() {
 
@@ -36,23 +37,11 @@ export default function Index() {
               <ListItemSseparator color={"red"}/>)}
               
             renderItem={({ item}) => (
-              <TouchableOpacity onPress={() => selectedList(item)}>
-                <View style={[styles.flatListRow,
-                  {
-                    backgroundColor: item.id === selectedId
-                    ? colors.primary
-                    : colors.secondary,
-                  }
-                ]}>
-                  <Text style={[styles.titleText,
-                    {
-                      color: item.id === selectedId
-                      ? colors.text.light
-                      : colors.text.dark
-                    }
-                  ]}>{item.title}</Text>  
-                </View>
-              </TouchableOpacity>
+              <ListItem 
+                item={item}
+                isSelected ={item.id === selectedId}
+                onPress={selectedList}  
+              />
             )
             } 
 
